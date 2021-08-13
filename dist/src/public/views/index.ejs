@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.min.js"></script>
+    <script src="../js/index.js" defer></script>
+    <style>
+      body {
+        background-color: beige;
+      }
+    </style>
+    <title>Home</title>
+  </head>
+  <body>
+    <!---  { showReply: true, tweet: `What is your
+    person's favourite joke?`, replyPlaceHolder: "Tweet your reply here.",
+    QuestionAsker: { profilePic:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Pierre-Person.jpg/220px-Pierre-Person.jpg",
+    name: "QuestionAsker" }} -->
+    <%- include ("./twitter.ejs", { showReply: true, tweet: `What is your
+    person's favourite joke?`, replyPlaceHolder: "Tweet your reply here.",
+    QuestionAsker: { profilePic:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Pierre-Person.jpg/220px-Pierre-Person.jpg",
+    name: "QuestionAsker" }})%>
+    <button id="btn">Click Here</button>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+}
+
+.twitter-card {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  background-color: rgb(21, 32, 43);
+  border: 2px solid rgb(56, 68, 77);
+  position: relative;
+  width: 540px;
+  min-height: 210px;
+  color: #ffffff;
+}
+
+.user-info {
+  position: relative;
+}
+
+.user-info * {
+  display: inline-block;
+}
+
+.user-info .username {
+  cursor: pointer;
+  position: absolute;
+  top: 13px;
+  font-size: 1.2em;
+}
+
+.user-info .at {
+  cursor: pointer;
+  position: absolute;
+  font-size: 0.75em;
+  margin-left: 1px;
+  top: 2.5rem;
+}
+
+.profileImg {
+  cursor: pointer;
+  border-radius: 50%;
+  shape-outside: circle(50%);
+  margin: 10px;
+}
+
+.user-info .profileImg {
+  width: 45px;
+  height: 45px;
+}
+
+.tweet {
+  margin-left: 12px;
+  margin-right: 8px;
+}
+
+.tweet-info {
+  position: relative;
+  top: 8px;
+  font-size: 0.74em;
+  margin-left: 5px;
+  color: rgb(136, 153, 166);
+}
+.tweet-info span {
+  margin-right: 7px;
+  margin-left: 7px;
+}
+
+.tweet-info .device {
+  color: rgb(150, 150, 240);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.line {
+  position: relative;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  border-top: 2px solid rgb(56, 68, 77);
+}
+
+.line.full {
+  position: relative;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  border-top: 2px solid rgb(56, 68, 77);
+}
+
+.tweet-stats > p {
+  display: inline-block;
+  padding: 0.7rem;
+  font-size: 0.8em;
+}
+
+.tweet-stats span {
+  color: rgb(85, 99, 110);
+}
+
+.share {
+  position: relative;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 6px;
+}
+
+.share svg {
+  cursor: pointer;
+  fill: #ffffff;
+  height: 20px;
+  width: 20px;
+}
+
+.reply {
+  position: relative;
+}
+
+.replyContent {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.replyInfo {
+  color: rgb(85, 99, 110);
+  margin-left: 75px;
+  font-size: 0.6em;
+  margin-top: 8px;
+  padding-bottom: 2px;
+}
+
+.replyInfo span {
+  color: rgb(150, 150, 240);
+  cursor: pointer;
+}
+
+.reply .profileImg {
+  width: 55px;
+  height: 55px;
+}
+
+.reply .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reply .right {
+  position: relative;
+  margin-right: 6%;
+}
+
+.replyBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(30, 161, 241);
+  border: none;
+  padding: 1rem;
+}
