@@ -5,3 +5,9 @@ document.querySelector("button#btn").onclick =
             audio.play();
         });
     };
+function tweeted() {
+    console.log(document.querySelector("body > section > div.tweet > p"));
+}
+function replied() {
+    console.log(document.querySelector("body > section > div.reply > div.replyContent > div.left > h4"));
+}
