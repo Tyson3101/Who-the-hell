@@ -1,0 +1,25 @@
+{
+  "name": "whothehell",
+  "version": "1.0.0",
+  "description": "A party game of guess who with a twist!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsnd --project tsconfig.server.json src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tyson3101/Who-the-hell.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tyson3101/Who-the-hell/issues"
+  },
+  "homepage": "https://github.com/Tyson3101/Who-the-hell#readme",
+  "dependencies": {
+    "@types/node-fetch": "^2.5.12",
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.1"
+  }
+}
