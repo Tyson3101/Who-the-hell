@@ -6,7 +6,7 @@ const app = express();
 const http = HTTP.createServer(app);
 const io = new Server(http);
 
-app.use(express.static("./"));
+app.use(express.static("./dist/src/public"));
 app.set("view engine", "ejs");
 app.set("views", "./dist/src/public/views");
 

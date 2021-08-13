@@ -10,7 +10,7 @@ const socket_io_1 = require("socket.io");
 const app = express_1.default();
 const http = http_1.default.createServer(app);
 const io = new socket_io_1.Server(http);
-app.use(express_1.default.static("./"));
+app.use(express_1.default.static("./dist/src/public"));
 app.set("view engine", "ejs");
 app.set("views", "./dist/src/public/views");
 app.get("/", (req, res) => {
