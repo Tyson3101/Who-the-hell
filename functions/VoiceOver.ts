@@ -1,7 +1,7 @@
 import fs from "fs";
 import fetch from "node-fetch";
 
-export async function voiceMp3(text: string, outputFile: string) {
+export async function voiceMp3(text: string, outputFile?: string) {
   const response = await fetch(
     `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${process.env.API_KEY}`,
     {

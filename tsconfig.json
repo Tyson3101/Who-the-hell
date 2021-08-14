@@ -8,8 +8,9 @@
     "rootDir": "./",
     "moduleResolution": "node",
 
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext"],
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["dist", "client"]
 }
