@@ -9,7 +9,7 @@ import ReactDOMServer from "react-dom/server.js";
 const app = express();
 const http = HTTP.createServer(app);
 const io = new Server(http);
-import App from "../src/App.js";
+import Home from "../src/Home";
 
 app.use(require("cors")({ origin: "*" }));
 app.use(express.urlencoded({ extended: true }));
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
     return res.send(
       data.replace(
         '<div id="root"></div>',
-        `<div id="root">${ReactDOMServer.renderToString(<App />)}</div>`
+        `<div id="root">${ReactDOMServer.renderToString(<Home />)}</div>`
       )
     );
   });

@@ -4,11 +4,10 @@
 
 .twitter-card {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   background-color: rgb(21, 32, 43);
   border: 2px solid rgb(56, 68, 77);
-  width: 600px;
-  min-height: 210px;
+  width: 25em;
   color: #ffffff;
 }
 
@@ -32,7 +31,7 @@
   position: absolute;
   font-size: 0.7em;
   margin-left: 1px;
-  top: 2.5rem;
+  top: 2.2em;
   padding-top: 0.3em;
 }
 
@@ -148,10 +147,8 @@
   display: flex;
 }
 
-.reply .left div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.reply .left h4 {
+  padding-top: 0.4em;
 }
 
 .reply .right {

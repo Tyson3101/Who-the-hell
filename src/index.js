@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "./index.css";
+import Home from "./Home";
 
 ReactDOM.hydrate(
   <React.StrictMode>
-    <App />
+    <Home />
   </React.StrictMode>,
   document.getElementById("root")
 );
