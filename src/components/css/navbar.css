@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+}
+
+.navbar {
+  width: 100%;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 2rem;
+  background-color: rgb(240, 80, 80);
+}

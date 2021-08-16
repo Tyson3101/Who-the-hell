@@ -4,10 +4,10 @@
 
 .twitter-card {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: min(3vw, 1.5rem);
   background-color: rgb(21, 32, 43);
   border: 2px solid rgb(56, 68, 77);
-  width: 25em;
+  width: 30em;
   color: #ffffff;
 }
 
@@ -28,10 +28,9 @@
 
 .user-info .at {
   cursor: pointer;
-  position: absolute;
+  position: relative;
   font-size: 0.7em;
   margin-left: 1px;
-  top: 2.2em;
   padding-top: 0.3em;
 }
 
@@ -149,6 +148,7 @@
 
 .reply .left h4 {
   padding-top: 0.4em;
+  max-width: 18em;
 }
 
 .reply .right {

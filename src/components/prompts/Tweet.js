@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from "react";
-import "./index.css";
+import PropTypes from "prop-types";
 import io from "socket.io-client";
+import "../css/twitter.css";
 
-function App({ QuestionAsker, showReply, tweet, replyPlaceHolder }) {
+Twitter.propTypes = {
+  UserInfo: PropTypes.shape({
+    name: PropTypes.string,
+    profilePic: PropTypes.string,
+  }),
+  showReply: PropTypes.bool,
+  tweet: PropTypes.string,
+  replyPlaceHolder: PropTypes.string,
+  style: PropTypes.object,
+};
+
+function Twitter({ style, UserInfo, showReply, tweet, replyPlaceHolder }) {
   const [socket, setSocket] = useState(io);
   const [audio, setAudio] = useState(
     new Audio(
@@ -29,23 +41,23 @@ function App({ QuestionAsker, showReply, tweet, replyPlaceHolder }) {
 
   return (
     <>
-      <section className="twitter-card">
+      <section className="twitter-card" style={style}>
         <div className="user-info">
           <img
             className="profileImg"
             src={
-              QuestionAsker?.profilePic ??
+              UserInfo?.profilePic ??
               "https://cdn.writermag.com/2019/03/question-marks.jpg"
             }
             alt=""
           />
-          <h2 className="username">
-            {QuestionAsker?.name || "Who tweeted this?"}
-          </h2>
+          <h2 className="username">{UserInfo?.name || "Who tweeted this?"}</h2>
           <h2 className="at">
             @
-            {QuestionAsker?.name.replace(" ", "_")?.toLowerCase() ||
-              "Who_tweeted_this?"}
+            {UserInfo?.name
+              .replaceAll(" ", "_")
+              .replaceAll("🤡", "")
+              ?.toLowerCase() || "Who_tweeted_this?"}
           </h2>
         </div>
         <div className="tweet">
@@ -151,8 +163,11 @@ function App({ QuestionAsker, showReply, tweet, replyPlaceHolder }) {
                   Replying to{" "}
                   <span>
                     @
-                    {(typeof QuestionAsker !== "undefined" &&
-                      QuestionAsker.name.replace(" ", "_").toLowerCase()) ||
+                    {(typeof UserInfo !== "undefined" &&
+                      UserInfo.name
+                        .replaceAll(" ", "_")
+                        .replaceAll("🤡", "")
+                        .toLowerCase()) ||
                       "Who_tweeted_this?"}
                   </span>
                 </p>
@@ -194,4 +209,4 @@ function App({ QuestionAsker, showReply, tweet, replyPlaceHolder }) {
     </>
   );
 }
-export default App;
+export default Twitter;

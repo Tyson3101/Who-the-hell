@@ -1,10 +1,10 @@
 import React from "react";
-import Twitter from "./components/Tweet";
+import Game from "./Game";
 
 function Home() {
   return (
     <>
-      <Twitter />
+      <Game />
     </>
   );
 }
