@@ -1,10 +1,10 @@
 import React from "react";
-import Game from "./Game";
+import Navbar from "./components/static/Navbar";
 
 function Home() {
   return (
     <>
-      <Game />
+      <Navbar />
     </>
   );
 }

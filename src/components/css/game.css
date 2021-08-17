@@ -27,3 +27,32 @@ body {
   background-color: rgb(240, 80, 80);
   font-size: 2.2rem;
 }
+
+.SignIn {
+  position: absolute;
+  background-color: rgba(255, 0, 0, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  width: 50%;
+  font-size: 2vw;
+}
+
+.SignIn * {
+  padding: 4vh;
+}
+
+.SignIn input {
+  width: min(200px, 40vw);
+  height: 2px;
+}
+.SignIn button {
+  padding: 1vh;
+  background-color: aqua;
+}

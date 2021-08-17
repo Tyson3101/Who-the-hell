@@ -15,27 +15,11 @@ Twitter.propTypes = {
 };
 
 function Twitter({ style, UserInfo, showReply, tweet, replyPlaceHolder }) {
-  const [socket, setSocket] = useState(io);
-  const [audio, setAudio] = useState(
-    new Audio(
-      "https://github.com/Tyson3101/Who-the-hell/blob/main/prompts/Twitter/joke.mp3?raw=true"
-    )
-  );
-  function play() {
-    audio.play();
-  }
-  useEffect(() => {
-    console.log(showReply);
-    socket.emit("Working", console.log);
-  }, []);
-
   function tweeted() {
-    play();
     console.log("Working.");
   }
 
   function replied() {
-    play();
     console.log("Working.");
   }
 
