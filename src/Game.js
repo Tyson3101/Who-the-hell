@@ -37,29 +37,46 @@ function Game() {
     },
   });
   const { id: gameId } = useParams();
-  const [game, setGame] = useState({});
-  const [me, setMe] = useState(null);
-  const [socket, setSocket] = useState(io("/"));
+  const [players, setPlayers] = useState([]);
+  const [me, setMe] = useState({});
+  const [socket] = useState(io("/"));
+
+  useEffect(() => {
+    console.log("Got event");
+    socket.on("userJoinedClient", (player) => {
+      if (me.id === player.id) return;
+      setPlayers((prevPlayers) => [
+        ...new Map(
+          [...prevPlayers, player].map((item) => [item.id, item])
+        ).values(),
+      ]);
+    });
+  }, [socket]);
 
   function joinGame(name) {
     console.log(name);
-    socket.emit("userJoined", gameId, name, (obj) => {
-      console.log(obj);
-      setMe(obj);
+    socket.emit("userJoinedServer", gameId, name, (meId, users) => {
+      setMe(() => meId);
+      setPlayers(() => [...users]);
     });
-    //setMe({ id: (Math.random() * 10).toFixed("9"), name });
   }
-
-  return (
-    <>
-      <Navbar />
-      {!me ? (
+  if (!me.id && !me.name) {
+    return (
+      <>
+        <Navbar />
         <SignIn onClickEvt={joinGame} />
-      ) : (
+      </>
+    );
+  } else
+    return (
+      <>
+        <Navbar />
+        <div>
+          <h1>{players.map((u) => u.name).join("\n")}</h1>
+        </div>
         <view.View prompt={view.props} />
-      )}
-    </>
-  );
+      </>
+    );
 }
 
 export default Game;

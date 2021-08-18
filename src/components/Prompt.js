@@ -2,7 +2,6 @@ import React from "react";
 import "./css/game.css";
 
 function Prompt({ prompt }) {
-  console.log(prompt);
   return (
     <>
       <div className="promptContainer">
