@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  uniqueNamesGenerator,
-  adjectives,
-  colors,
-  animals,
-} from "unique-names-generator";
 import { useParams } from "react-router-dom";
+import prompts from "./add/prompts/prompts";
 import Prompt from "./components/Prompt";
 import Twitter from "./components/prompts/Tweet";
 import Navbar from "./components/static/Navbar";
@@ -32,17 +27,20 @@ function Game() {
           name: "Hater 🤡🤡",
         },
         tweet:
-          "Please kill yourself. You fucking faggot, little ass cocks sucking faggot.",
+          prompts.prompts.twitter.hateComments[
+            Math.floor(
+              Math.random() * prompts.prompts.twitter.hateComments.length
+            )
+          ].text,
       },
     },
   });
   const { id: gameId } = useParams();
-  const [players, setPlayers] = useState([]);
+  const [game, setGame] = useState({});
   const [me, setMe] = useState({});
   const [socket] = useState(io("/"));
 
   useEffect(() => {
-    console.log("Got event");
     socket.on("userJoinedClient", (player) => {
       if (me.id === player.id) return;
       setPlayers((prevPlayers) => [
@@ -55,10 +53,17 @@ function Game() {
 
   function joinGame(name) {
     console.log(name);
-    socket.emit("userJoinedServer", gameId, name, (meId, users) => {
-      setMe(() => meId);
-      setPlayers(() => [...users]);
-    });
+    socket.emit(
+      "userJoinedServer",
+      gameId,
+      name,
+      (meId, users, success, error) => {
+        if (!success)
+          return (window.location = `/?error=${error.replace(/\s/g, "")}`);
+        setMe(() => meId);
+        setPlayers(() => [...users]);
+      }
+    );
   }
   if (!me.id && !me.name) {
     return (
@@ -71,10 +76,7 @@ function Game() {
     return (
       <>
         <Navbar />
-        <div>
-          <h1>{players.map((u) => u.name).join("\n")}</h1>
-        </div>
-        <view.View prompt={view.props} />
+        <PlayerList players={players} />
       </>
     );
 }

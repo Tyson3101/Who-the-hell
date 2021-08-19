@@ -1,4 +1,4 @@
-export default function Random(filter) {
+export default function Random(filter = []) {
   const profilePics = [
     "https://i.imgur.com/rIofxxQ.png",
     "https://i.imgur.com/PLqY3Es.png",
@@ -9,7 +9,7 @@ export default function Random(filter) {
     "https://i.imgur.com/RzwdkXB.png",
     "https://i.imgur.com/7mboq4i.png",
     "https://i.imgur.com/nBSMLIy.png",
-    "https://i.imgur.com/xha65hx.png",
-  ].filter((url) => filter?.length && !filter.includes(url));
+    "https://i.imgur.com/YrWcHet.png",
+  ].filter((url) => !filter.includes(url));
   return profilePics[Math.floor(Math.random() * profilePics.length)];
 }

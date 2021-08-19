@@ -4,7 +4,8 @@ import express from "express";
 import short from "short-uuid";
 import fs from "fs";
 import { Server } from "socket.io";
-import { voiceMp3 } from "../src/functions/VoiceOver.js";
+import RandomProfilePic from "../src/add/functions/RandomProfilePic";
+import { voiceMp3 } from "../src/add/functions/VoiceOver.js";
 const app = express();
 const http = HTTP.createServer(app);
 const io = new Server(http);
@@ -30,7 +31,7 @@ const rooms = {
 
 app.use((req, res) => {
   const [htmlString, error] = ReactToHtml();
-  if (error) return res.redirect("/?error=UnkownError");
+  if (error) return res.redirect("/?error=UnknownError");
   if (!rooms[req.url.toUpperCase().replace("/", "")])
     return res.redirect("/?error=GameNotFound");
   else return res.send(htmlString);
@@ -45,18 +46,38 @@ app.post("/voiceover", async (req, res) => {
 io.on("connection", (socket) => {
   socket.on("userJoinedServer", (roomId, name, cb) => {
     roomId = roomId.toUpperCase();
+    if (rooms[roomId].players.length >= 8)
+      return cb(null, null, false, "Game Full");
     const id = short.generate().toString();
-    if (rooms[roomId]?.players.length >= 8)
-      return cb({ success: false, error: "Game Full" });
-    socket.join(roomId);
-    rooms[roomId].players.push({ id, name });
-    cb(
-      { id, name },
-      rooms[roomId].players.map(({ id, name }) => ({ id, name }))
+    let profilePic = RandomProfilePic(
+      rooms[roomId].players.map((u) => u.profilePic)
     );
-    io.sockets.in(roomId).emit("userJoinedClient", { id, name });
+    socket.join(roomId);
+    const me = {
+      id,
+      name,
+      profilePic,
+      leader: !rooms[roomId].players[0],
+    };
+    rooms[roomId].players.push(me);
+    cb(
+      me,
+      rooms[roomId].players.map(
+        ({ id: usid, name: usname, profilePic: pic, leader }) => ({
+          id: usid,
+          name: usname,
+          profilePic: pic,
+          leader,
+        })
+      ),
+      true
+    );
+    io.sockets.in(roomId).emit("userJoinedClient", { id, name, profilePic });
   });
-  console.log(JSON.stringify(rooms, null, 4));
 });
+
+setInterval(() => {
+  console.log(JSON.stringify(rooms, null, 4));
+}, 20000);
 
 http.listen(process.env.PORT || 4000, () => console.log(process.env.URL));
