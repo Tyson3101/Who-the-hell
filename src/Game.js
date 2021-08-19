@@ -4,7 +4,7 @@ import prompts from "./add/prompts/prompts";
 import Prompt from "./components/Prompt";
 import Twitter from "./components/prompts/Tweet";
 import Navbar from "./components/static/Navbar";
-import SignIn from "./components/SignIn";
+import SignIn from "./components/static/SignIn";
 import io from "socket.io-client";
 
 function Game() {
@@ -36,7 +36,7 @@ function Game() {
     },
   });
   const { id: gameId } = useParams();
-  const [game, setGame] = useState({});
+  const [players, setPlayers] = useState({});
   const [me, setMe] = useState({});
   const [socket] = useState(io("/"));
 
